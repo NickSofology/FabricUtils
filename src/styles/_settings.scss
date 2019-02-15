@@ -1,0 +1,16 @@
+// Global unit
+$global-unit: 6px !default;
+
+// Spacing unit factors
+$global-spacing-unit-factor-tiny: 1 !default; // 6px
+$global-spacing-unit-factor-small: 2 !default; // 12px
+$global-spacing-unit-factor: 4 !default; // 24px
+$global-spacing-unit-factor-large: 8 !default; // 48px
+$global-spacing-unit-factor-huge: 16 !default; // 96px
+
+// Spacing units
+$global-spacing-unit: $global-unit * $global-spacing-unit-factor;
+$global-spacing-unit-tiny: $global-unit * $global-spacing-unit-factor-tiny;
+$global-spacing-unit-small: $global-unit * $global-spacing-unit-factor-small;
+$global-spacing-unit-large: $global-unit * $global-spacing-unit-factor-large;
+$global-spacing-unit-huge: $global-unit * $global-spacing-unit-factor-huge;

@@ -1,0 +1,53 @@
+// Tools
+
+// Fabric Colour function
+@function fabric-color($key: "primary") {
+  @if map-has-key($fabrics, $key) {
+    @return map-get($fabrics, $key);
+  }
+  @error "Invalid color name: `#{$key}`.";
+}
+
+// @function fabric-get-tint($fabric-value, $tone-key) {
+//   @return fabric-tint($fabric-value, $tone-key);
+// }
+// @function fabric-get-shade($fabric-value, $tone-key) {
+//   @return fabric-shade($fabric-value, $tone-key);
+// }
+
+// @function fabric-tint($color, $percentage) {
+//   @return mix(white, $color, $percentage);
+// }
+
+// @function fabric-shade($color, $percentage) {
+//   @return mix(black, $color, $percentage);
+// }
+
+// Fabric Luminance function, requires lookup.scss
+@function fabric-luminance($color) {
+  $red: nth($fabric-linear-channel-values, red($color) + 1);
+  $green: nth($fabric-linear-channel-values, green($color) + 1);
+  $blue: nth($fabric-linear-channel-values, blue($color) + 1);
+
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+// Fabric Contrast function
+@function fabric-contrast($back, $front) {
+  $backLum: fabric-luminance($back) + 0.05;
+  $foreLum: fabric-luminance($front) + 0.25;
+
+  @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}
+
+// Contrast Chooser function
+@function fabric-choose-contrast-color($color) {
+  $lightContrast: fabric-contrast($color, fabric-color("light"));
+  $darkContrast: fabric-contrast($color, fabric-color("dark"));
+
+  @if ($lightContrast > $darkContrast) {
+    @return fabric-color("light");
+  } @else {
+    @return fabric-color("dark");
+  }
+}

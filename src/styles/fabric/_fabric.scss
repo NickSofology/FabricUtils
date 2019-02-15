@@ -1,0 +1,18 @@
+// Fabric
+
+@import "./settings";
+@import "./tools/tools";
+@import "./tools/lookup";
+
+.u-fabric {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+// Class generator
+@each $key, $val in $fabrics {
+  .u-fabric--#{$key} {
+    background-color: #{$val};
+    color: fabric-choose-contrast-color($val);
+  }
+}
