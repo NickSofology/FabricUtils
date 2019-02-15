@@ -1,5 +1,6 @@
-// Global unit
+// Globals
 $global-unit: 6px !default;
+$global-timing: 0.3s;
 
 // Spacing unit factors
 $global-spacing-unit-factor-tiny: 1 !default; // 6px
@@ -14,3 +15,6 @@ $global-spacing-unit-tiny: $global-unit * $global-spacing-unit-factor-tiny;
 $global-spacing-unit-small: $global-unit * $global-spacing-unit-factor-small;
 $global-spacing-unit-large: $global-unit * $global-spacing-unit-factor-large;
 $global-spacing-unit-huge: $global-unit * $global-spacing-unit-factor-huge;
+
+// Global Transition
+$global-transition: all $global-timing linear !default;

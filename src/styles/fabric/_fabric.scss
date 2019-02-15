@@ -5,8 +5,12 @@
 @import "./tools/lookup";
 
 .u-fabric {
-  padding: 24px;
-  margin-bottom: 24px;
+  padding: $global-spacing-unit-small;
+
+  &--interactive {
+    cursor: pointer;
+    transition: $global-transition;
+  }
 }
 
 // Class generator
@@ -14,5 +18,9 @@
   .u-fabric--#{$key} {
     background-color: #{$val};
     color: fabric-choose-contrast-color($val);
+
+    &.u-fabric--interactive:hover {
+      background-color: darken($val, 10%);
+    }
   }
 }
